@@ -1,0 +1,19 @@
+﻿<UserControl
+    x:Class="WPFControls.Views.FilesListControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WPFControls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:WPFControls.Views"
+    Name="Control"
+    d:DesignHeight="450"
+    d:DesignWidth="300"
+    Background="White"
+    mc:Ignorable="d">
+    <ListBox
+        x:Name="FilesListBox"
+        HorizontalContentAlignment="Stretch"
+        BorderThickness="0"
+        ItemsSource="{Binding ElementName=Control, Path=FileControls}" />
+</UserControl>
