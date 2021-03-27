@@ -32,13 +32,13 @@ namespace WPFControls.Views
                 new PropertyMetadata(new ObservableCollection<string>(),
                     new PropertyChangedCallback(FilesCollectionChanged)));
 
-        ///// <summary>
-        ///// Возвращает и задает команду добавления файла
-        ///// </summary>
-        //public static readonly DependencyProperty AddCommandProperty =
-        //    DependencyProperty.Register(nameof(AddCommand),
-        //        typeof(RelayCommand),
-        //        typeof(FilesListControl));
+        /// <summary>
+        /// Возвращает и задает команду удаления файла по индексу
+        /// </summary>
+        public static readonly DependencyProperty RemoveCommandProperty =
+            DependencyProperty.Register(nameof(RemoveCommand),
+                typeof(RelayCommand<int>),
+                typeof(FilesListControl));
 
         /// <summary>
         /// Возвращает и задает список контролов
@@ -58,14 +58,14 @@ namespace WPFControls.Views
             set => SetValue(FilesCollectionProperty, value);
         }
 
-        ///// <summary>
-        ///// Команда добавления файла
-        ///// </summary>
-        //public RelayCommand AddCommand
-        //{
-        //    get => (RelayCommand)GetValue(AddCommandProperty);
-        //    set => SetValue(AddCommandProperty, value);
-        //}
+        /// <summary>
+        /// Команда удаления файла по индексу
+        /// </summary>
+        public RelayCommand<int> RemoveCommand
+        {
+            get => (RelayCommand<int>)GetValue(RemoveCommandProperty);
+            set => SetValue(RemoveCommandProperty, value);
+        }
 
         /// <summary>
         /// Создает экземпляр <see cref="FilesListControl"/>
@@ -109,6 +109,7 @@ namespace WPFControls.Views
                 }
                 case NotifyCollectionChangedAction.Remove:
                 {
+                    FileControls.RemoveAt(e.OldStartingIndex);
                     break;
                 }
             }

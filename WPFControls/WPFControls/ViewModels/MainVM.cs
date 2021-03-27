@@ -17,9 +17,14 @@ namespace WPFControls.ViewModels
         private RelayCommand _addFileCommand;
 
         /// <summary>
+        /// Команда удаления файла
+        /// </summary>
+        private RelayCommand<int> _removeFileCommand;
+
+        /// <summary>
         /// Возвращает и задает список файлов
         /// </summary>
-        public ObservableCollection<string> FilesList { get; set; }
+        public ObservableCollection<string> FilesList { get; set; } = new ObservableCollection<string>();
 
         /// <summary>
         /// Возвращает и задает команду добавления файла
@@ -45,11 +50,25 @@ namespace WPFControls.ViewModels
         }
 
         /// <summary>
+        /// Возвращает и задает команду удаления файла
+        /// </summary>
+        public RelayCommand<int> RemoveFileCommand
+        {
+            get
+            {
+                return _removeFileCommand ??
+                       (_removeFileCommand = new RelayCommand<int>((index) =>
+                       {
+                           FilesList.RemoveAt(index);
+                       }));
+            }
+        }
+
+        /// <summary>
         /// Создает экземпляр <see cref="MainVM"/>
         /// </summary>
         public MainVM()
         {
-            FilesList = new ObservableCollection<string>();
         }
     }
 }

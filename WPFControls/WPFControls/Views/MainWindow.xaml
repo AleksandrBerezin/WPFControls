@@ -18,7 +18,7 @@
         <Image x:Key="AddImage" Source="../Resources/AddImage.png" />
     </Window.Resources>
     <StackPanel>
-        <views:FilesListControl FilesCollection="{Binding FilesList}" />
+        <views:FilesListControl FilesCollection="{Binding FilesList}" RemoveCommand="{Binding RemoveFileCommand}" />
         <Button
             Width="22"
             Height="22"
