@@ -5,16 +5,20 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:WPFControls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:WPFControls.ViewModels"
     xmlns:views="clr-namespace:WPFControls.Views"
     Title="MainWindow"
     Width="300"
     Height="450"
     mc:Ignorable="d">
+    <Window.DataContext>
+        <viewModels:MainVM />
+    </Window.DataContext>
     <Window.Resources>
         <Image x:Key="AddImage" Source="../Resources/AddImage.png" />
     </Window.Resources>
     <StackPanel>
-        <views:FilesListControl />
+        <views:FilesListControl FilesCollection="{Binding FilesList}" />
         <Button
             Width="22"
             Height="22"
@@ -22,7 +26,7 @@
             HorizontalAlignment="Left"
             Background="White"
             BorderThickness="0"
-            Command="{Binding AddCommand}"
+            Command="{Binding AddFileCommand}"
             Content="{StaticResource AddImage}" />
     </StackPanel>
 </Window>

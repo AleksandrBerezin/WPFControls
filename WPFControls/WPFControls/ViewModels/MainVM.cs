@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿using System.Collections.ObjectModel;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using WPFControls.Services;
 using WPFControls.Views;
@@ -13,19 +14,23 @@ namespace WPFControls.ViewModels
         /// <summary>
         /// Команда добавления файла
         /// </summary>
-        private RelayCommand _addCommand;
+        private RelayCommand _addFileCommand;
+
+        /// <summary>
+        /// Возвращает и задает список файлов
+        /// </summary>
+        public ObservableCollection<string> FilesList { get; set; }
 
         /// <summary>
         /// Возвращает и задает команду добавления файла
         /// </summary>
-        public RelayCommand AddCommand
+        public RelayCommand AddFileCommand
         {
             get
             {
-                return _addCommand ??
-                       (_addCommand = new RelayCommand(() =>
+                return _addFileCommand ??
+                       (_addFileCommand = new RelayCommand(() =>
                        {
-                           // TODO Вызрать серфис, получить файл; Создать vm, добавить контрол
                            var fileService = new FileService();
                            var result = fileService.ShowDialog(out string fileName);
 
@@ -34,10 +39,17 @@ namespace WPFControls.ViewModels
                                return;
                            }
 
-                           var vm = new FilesListVM();
-                           // TODO В Vm создать свойство, связать его с FilesListControl
+                           FilesList.Add(fileName);
                        }));
             }
+        }
+
+        /// <summary>
+        /// Создает экземпляр <see cref="MainVM"/>
+        /// </summary>
+        public MainVM()
+        {
+            FilesList = new ObservableCollection<string>();
         }
     }
 }
