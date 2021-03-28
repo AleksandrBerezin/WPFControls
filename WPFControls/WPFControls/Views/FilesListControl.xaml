@@ -5,14 +5,39 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:WPFControls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:views="clr-namespace:WPFControls.Views"
     Name="Control"
     d:DesignHeight="450"
     d:DesignWidth="300"
     Background="White"
     mc:Ignorable="d">
     <ListBox
+        x:Name="FilesListBox"
         HorizontalContentAlignment="Stretch"
         BorderThickness="0"
-        ItemsSource="{Binding ElementName=Control, Path=FileControls, Mode=TwoWay}" />
+        ItemsSource="{Binding ElementName=Control, Path=FilesCollection}">
+        <ListBox.ItemTemplate>
+            <DataTemplate>
+                <DockPanel>
+                    <TextBox
+                        Padding="1,1,0,0"
+                        BorderThickness="0"
+                        IsReadOnly="True"
+                        Text="{Binding Name, Mode=OneWay}" />
+                    <Button
+                        Name="RemoveButton"
+                        Width="20"
+                        Padding="2"
+                        HorizontalAlignment="Right"
+                        Background="White"
+                        BorderThickness="0"
+                        Command="{Binding ElementName=Control, Path=RemoveCommand}"
+                        CommandParameter="{Binding}">
+                        <Button.Content>
+                            <Image Source="../Resources/CloseImage.png" />
+                        </Button.Content>
+                    </Button>
+                </DockPanel>
+            </DataTemplate>
+        </ListBox.ItemTemplate>
+    </ListBox>
 </UserControl>

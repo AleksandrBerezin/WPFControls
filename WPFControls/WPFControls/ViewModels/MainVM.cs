@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using Core;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using WPFControls.Services;
@@ -19,12 +20,12 @@ namespace WPFControls.ViewModels
         /// <summary>
         /// Команда удаления файла
         /// </summary>
-        private RelayCommand<int> _removeFileCommand;
+        private RelayCommand<FileItem> _removeFileCommand;
 
         /// <summary>
         /// Возвращает и задает список файлов
         /// </summary>
-        public ObservableCollection<string> FilesList { get; set; } = new ObservableCollection<string>();
+        public ObservableCollection<FileItem> FilesList { get; set; } = new ObservableCollection<FileItem>();
 
         /// <summary>
         /// Возвращает и задает команду добавления файла
@@ -44,7 +45,7 @@ namespace WPFControls.ViewModels
                                return;
                            }
 
-                           FilesList.Add(fileName);
+                           FilesList.Add(new FileItem(fileName));
                        }));
             }
         }
@@ -52,14 +53,14 @@ namespace WPFControls.ViewModels
         /// <summary>
         /// Возвращает и задает команду удаления файла
         /// </summary>
-        public RelayCommand<int> RemoveFileCommand
+        public RelayCommand<FileItem> RemoveFileCommand
         {
             get
             {
                 return _removeFileCommand ??
-                       (_removeFileCommand = new RelayCommand<int>((index) =>
+                       (_removeFileCommand = new RelayCommand<FileItem>(file =>
                        {
-                           FilesList.RemoveAt(index);
+                           FilesList.Remove(file);
                        }));
             }
         }

@@ -135,6 +135,11 @@
   <ItemGroup>
     <Resource Include="Resources\CloseImage.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{15656ae1-860b-4ef4-b467-1c306a4bfaaa}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
