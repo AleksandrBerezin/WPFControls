@@ -18,16 +18,22 @@
     <Window.Resources>
         <Image x:Key="AddImage" Source="../Resources/AddImage.png" />
     </Window.Resources>
-    <StackPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="34" />
+        </Grid.RowDefinitions>
         <views:FilesListControl FilesCollection="{Binding FilesList}" RemoveCommand="{Binding RemoveFileCommand}" />
         <Button
-            Width="22"
-            Height="22"
-            Margin="10,0,0,0"
+            Padding="3"
+            Grid.Row="1"
+            Width="28"
+            Height="28"
+            Margin="10,3,0,3"
             HorizontalAlignment="Left"
             Background="White"
             BorderThickness="0"
             Command="{Binding AddFileCommand}"
             Content="{StaticResource AddImage}" />
-    </StackPanel>
+    </Grid>
 </Window>
