@@ -10,6 +10,18 @@
     d:DesignWidth="300"
     Background="White"
     mc:Ignorable="d">
+    <Control.Resources>
+        <Style TargetType="Button">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsMouseOver, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}" Value="True">
+                    <Setter Property="Visibility" Value="Visible" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding IsMouseOver, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ListBoxItem}}}" Value="False">
+                    <Setter Property="Visibility" Value="Hidden" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+    </Control.Resources>
     <ListBox
         x:Name="FilesListBox"
         HorizontalContentAlignment="Stretch"
@@ -17,7 +29,7 @@
         ItemsSource="{Binding ElementName=Control, Path=FilesCollection}">
         <ListBox.ItemTemplate>
             <DataTemplate>
-                <DockPanel>
+                <DockPanel Background="White">
                     <TextBox
                         Padding="1,1,0,0"
                         BorderThickness="0"
