@@ -70,10 +70,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="Views\FileControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\FilesListControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -89,12 +85,7 @@
     <Compile Include="FileStyleSelector.cs" />
     <Compile Include="Services\FileService.cs" />
     <Compile Include="Services\IFileService.cs" />
-    <Compile Include="ViewModels\FileVM.cs" />
-    <Compile Include="ViewModels\FilesListVM.cs" />
     <Compile Include="ViewModels\MainVM.cs" />
-    <Compile Include="Views\FileControl.xaml.cs">
-      <DependentUpon>FileControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\FilesListControl.xaml.cs">
       <DependentUpon>FilesListControl.xaml</DependentUpon>
     </Compile>
