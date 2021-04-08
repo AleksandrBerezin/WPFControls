@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using WPFControls.Services;
+using WPFControls.ViewModels;
 
 namespace WPFControls.Views
 {
@@ -10,6 +12,7 @@ namespace WPFControls.Views
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainVM(new FileService());
         }
     }
 }

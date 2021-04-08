@@ -23,6 +23,11 @@ namespace WPFControls.ViewModels
         private RelayCommand<FileItem> _removeFileCommand;
 
         /// <summary>
+        /// Сервис для открытия файла
+        /// </summary>
+        private IFileService _fileService;
+
+        /// <summary>
         /// Возвращает и задает список файлов
         /// </summary>
         public ObservableCollection<FileItem> FilesList { get; set; } = new ObservableCollection<FileItem>();
@@ -37,8 +42,7 @@ namespace WPFControls.ViewModels
                 return _addFileCommand ??
                        (_addFileCommand = new RelayCommand(() =>
                        {
-                           var fileService = new FileService();
-                           var result = fileService.ShowDialog(out string fileName);
+                           var result = _fileService.ShowDialog(out string fileName);
 
                            if (result != true)
                            {
@@ -68,8 +72,9 @@ namespace WPFControls.ViewModels
         /// <summary>
         /// Создает экземпляр <see cref="MainVM"/>
         /// </summary>
-        public MainVM()
+        public MainVM(IFileService fileService)
         {
+            _fileService = fileService;
         }
     }
 }

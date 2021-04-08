@@ -12,9 +12,6 @@
     Height="450"
     WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
-    <Window.DataContext>
-        <viewModels:MainVM />
-    </Window.DataContext>
     <Window.Resources>
         <Image x:Key="AddImage" Source="../Resources/AddImage.png" />
     </Window.Resources>
@@ -25,11 +22,11 @@
         </Grid.RowDefinitions>
         <views:FilesListControl FilesCollection="{Binding FilesList}" RemoveCommand="{Binding RemoveFileCommand}" />
         <Button
-            Padding="3"
             Grid.Row="1"
             Width="28"
             Height="28"
             Margin="10,3,0,3"
+            Padding="3"
             HorizontalAlignment="Left"
             Background="White"
             BorderThickness="0"
