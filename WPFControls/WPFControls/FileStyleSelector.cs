@@ -4,6 +4,7 @@ using Core;
 
 namespace WPFControls
 {
+    //TODO: попробуй сделать тоже самое, только с помощью конвертера
     /// <summary>
     /// Селектор стиля <see cref="FileStyleSelector"/> для элемента списка файлов
     /// </summary>

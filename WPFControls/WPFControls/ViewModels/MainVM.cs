@@ -32,6 +32,7 @@ namespace WPFControls.ViewModels
         /// </summary>
         public ObservableCollection<FileItem> FilesList { get; set; } = new ObservableCollection<FileItem>();
 
+        //TODO: сделай добавление множества файлов вместо добавления по одному
         /// <summary>
         /// Возвращает и задает команду добавления файла
         /// </summary>
