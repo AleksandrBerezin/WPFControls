@@ -1,4 +1,6 @@
-﻿namespace WPFControls.Services
+﻿using System.Collections.Generic;
+
+namespace WPFControls.Services
 {
     /// <summary>
     /// Интерфейс <see cref="IFileService"/> для открытия окна выбора файлов
@@ -8,8 +10,8 @@
         /// <summary>
         /// Открытие окна выбора файла
         /// </summary>
-        /// <param name="fileName"></param>
+        /// <param name="fileNames"></param>
         /// <returns></returns>
-        bool? ShowDialog(out string fileName);
+        bool? ShowDialog(out List<string> fileNames);
     }
 }

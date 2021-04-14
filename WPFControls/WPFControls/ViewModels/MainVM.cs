@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Core;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
@@ -32,7 +33,7 @@ namespace WPFControls.ViewModels
         /// </summary>
         public ObservableCollection<FileItem> FilesList { get; set; } = new ObservableCollection<FileItem>();
 
-        //TODO: сделай добавление множества файлов вместо добавления по одному
+        //TODO: сделай добавление множества файлов вместо добавления по одному (DONE)
         /// <summary>
         /// Возвращает и задает команду добавления файла
         /// </summary>
@@ -43,14 +44,17 @@ namespace WPFControls.ViewModels
                 return _addFileCommand ??
                        (_addFileCommand = new RelayCommand(() =>
                        {
-                           var result = _fileService.ShowDialog(out string fileName);
+                           var result = _fileService.ShowDialog(out List<string> fileNames);
 
                            if (result != true)
                            {
                                return;
                            }
 
-                           FilesList.Add(new FileItem(fileName));
+                           foreach (var fileName in fileNames)
+                           {
+                               FilesList.Add(new FileItem(fileName));
+                           }
                        }));
             }
         }

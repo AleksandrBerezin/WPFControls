@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using Microsoft.Win32;
 
 namespace WPFControls.Services
@@ -9,14 +11,15 @@ namespace WPFControls.Services
     public class FileService : IFileService
     {
         /// <inheritdoc/>
-        public bool? ShowDialog(out string fileName)
+        public bool? ShowDialog(out List<string> fileNames)
         {
-            fileName = null;
-            var dialog = new OpenFileDialog();
+            fileNames = new List<string>();
+            var dialog = new OpenFileDialog {Multiselect = true};
 
             if (dialog.ShowDialog() == true)
             {
-                fileName = Path.GetFileName(dialog.FileName);
+                var files = dialog.FileNames;
+                fileNames.AddRange(files.Select(Path.GetFileName));
                 return true;
             }
 
